@@ -99,7 +99,8 @@ createApp({
     }
     },
     eliminarCliente(clienteId) {
-      
+      this.clientes = this.clientes.filter(cliente => cliente.id !== clienteId);
+      this.guardarClientes();
     }
   }
 }).mount('#app');
