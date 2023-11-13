@@ -8,7 +8,41 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
+        
+    <div id="app" class="container mt-4">
+      
+    <h2>Gestión de Clientes</h2>
+
+    <!-- Botón para mostrar formulario de nuevo cliente -->
+    <button class="btn btn-success mb-3" @click="mostrarFormulario = !mostrarFormulario">
+        {{ mostrarFormulario ? 'Cancelar' : 'Agregar Cliente' }}
+    </button>
+
+    <!-- Formulario para agregar nuevo cliente -->
     
+    <div v-if="mostrarFormulario">
+      <form id = "agregarCliente">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" v-model="nuevoCliente.nombre">
+        </div>
+        <div class="mb-3">
+          <label for="correo" class="form-label">Correo Electrónico</label>
+          <input type="email" class="form-control" id="correo" v-model="nuevoCliente.correo" required>
+        </div>
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Número de Teléfono</label>
+          <input type="text" class="form-control" id="telefono" v-model="nuevoCliente.telefono" pattern="[0-9]{10}" maxlength="10" required>
+        </div>
+        <div class="mb-3">
+          <label for="direccion" class="form-label">Dirección</label>
+          <input type="text" class="form-control" id="direccion" v-model="nuevoCliente.direccion">
+        </div>
+
+        <button type="submit" class="btn btn-primary" @click="agregarCliente()">Guardar Cliente</button>
+
+      </form>
+    </div>
  
     <div id="app" class="container mt-4">
         <h2>Gestión de Clientes</h2>
@@ -43,8 +77,9 @@
         </table>
     </div>
   </div>
-
-  <script src = "App.js">  </script>
+    <script src = "App.js">  </script>
+     
+    
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

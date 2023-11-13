@@ -40,7 +40,23 @@ createApp({
       
     },
     agregarCliente() {
-     
+      let form = document.getElementById('agregarCliente');
+      // Verificar si el formulario es válido
+      if (form.checkValidity()) {
+      if (!this.nuevoCliente.nombre || !this.nuevoCliente.correo || !this.nuevoCliente.telefono || !this.nuevoCliente.direccion) {
+        alert("Por favor, completa los campos necesarios.");
+        return;
+      }
+      
+      this.nuevoCliente.id = Date.now();
+      this.nuevoCliente.creadoEn = new Date().toISOString();
+      this.clientes.push({...this.nuevoCliente});
+      this.guardarClientes();
+      this.nuevoCliente = { id: null, nombre: '', correo: '', telefono: '', direccion: '', creadoEn: '' };
+      this.mostrarFormulario = false;
+    }else{
+      form.reportValidity();
+    }
     },
     mostrarModalEdicion(cliente) {
      
@@ -48,10 +64,10 @@ createApp({
       
     },
     guardarEdicion() {
-        
+       
     },
     eliminarCliente(clienteId) {
-      
+     
     }
   }
 }).mount('#app');
