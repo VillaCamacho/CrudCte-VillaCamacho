@@ -15,6 +15,14 @@ createApp({
         telefono: '',
         direccion: '',
         creadoEn: ''
+      },
+      clienteEdicion: {
+        id: null,
+        nombre: '',
+        correo: '',
+        telefono: '',
+        direccion: '',
+        creadoEn: ''
       }
     };
   },
@@ -59,15 +67,21 @@ createApp({
     }
     },
     mostrarModalEdicion(cliente) {
+      this.clienteEdicion = Object.assign({}, cliente);
+      console.log(this.clienteEdicion)
      
+      this.$nextTick(() => {
+        const modal = new bootstrap.Modal(document.getElementById('modalEdicion'));
+        modal.show();
+      });
       
       
     },
     guardarEdicion() {
-       
+        
     },
     eliminarCliente(clienteId) {
-     
+      
     }
   }
 }).mount('#app');

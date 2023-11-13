@@ -10,7 +10,47 @@
 <body>
         
     <div id="app" class="container mt-4">
+      <!-- Modal de Edición -->
+    
+      <div class="modal fade" id="modalEdicion" tabindex="-1" aria-labelledby="modalEdicionLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalEdicionLabel">Editar Cliente</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+  
+              <form id="editarForm">
+                <div class="mb-3">
+                  <label for="editarNombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="editarNombre" v-model="clienteEdicion.nombre">
+                </div>
+                <div class="mb-3">
+                  <label for="correo" class="form-label">Correo Electrónico</label>
+                  <input type="email" class="form-control" id="correo" v-model="clienteEdicion.correo" required>
+                </div>
+                <div class="mb-3">
+                  <label for="telefono" class="form-label">Número de Teléfono</label>
+                  <input type="text" class="form-control" id="telefono" v-model="clienteEdicion.telefono" pattern="[0-9]{10}" maxlength="10" required>
+                </div>
+                <div class="mb-3">
+                  <label for="direccion" class="form-label">Dirección</label>
+                  <input type="text" class="form-control" id="direccion" v-model="clienteEdicion.direccion">
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary" @click.prevent="guardarEdicion()">Guardar Cambios</button>
       
+                </div>
+              </form>
+  
+            </div>
+            
+          </div>
+        </div>
+      </div>
     <h2>Gestión de Clientes</h2>
 
     <!-- Botón para mostrar formulario de nuevo cliente -->
