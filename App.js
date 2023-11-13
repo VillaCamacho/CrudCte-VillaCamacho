@@ -79,6 +79,24 @@ createApp({
     },
     guardarEdicion() {
         
+        let form = document.getElementById('editarForm');
+      // Verificar si el formulario es válido
+      if (form.checkValidity()) {
+      const indice = this.clientes.findIndex(c => c.id === this.clienteEdicion.id);
+      if (indice !== -1) {
+
+        this.clientes.splice(indice, 1, this.clienteEdicion);
+        
+        this.guardarClientes();
+        const modalEl = document.getElementById('modalEdicion');
+        const modal = bootstrap.Modal.getInstance(modalEl);
+        modal.hide();
+      } else {
+        console.error('Cliente no encontrado');
+      }
+    }else{
+      form.reportValidity();
+    }
     },
     eliminarCliente(clienteId) {
       
