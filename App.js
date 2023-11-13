@@ -24,7 +24,10 @@ createApp({
     };
   },
   created() {
-
+    ls = localStorage.getItem('clientes')
+    if(!ls){
+        localStorage.setItem('clientes', '[]')
+    }
     this.cargarClientes();
     
   },
